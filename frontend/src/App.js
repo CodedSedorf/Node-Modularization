@@ -1,21 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
-import axios from 'axios';
+import SignUp from './component/SignUp';
+import "bootstrap/dist/css/bootstrap.min.css"
+import { Route, Routes } from 'react-router-dom';
+import Admin_signup from './component/Admin/Admin_signup';
+import Landingpage from './component/Landingpage';
+import AdminLogin from './component/Admin/AdminLogin';
+import FileUpload from './component/File_Upload/FileUpload';
 
 function App() {
-  let endpoint = "http://localhost:3500/users";
-  const getData = ()=>{
-    axios.get(endpoint)
-    .then((response) =>{
-      console.log(response);
-    })
-
-  }
   return (
     <div>
-      <button onClick={getData}>Get Data</button>
+      <FileUpload/>
+      <Routes>
+        <Route path='/' element={<Landingpage/>}/>
+        <Route path='/signup' element={<SignUp/>}/>
+        <Route path='/admin' element={<Admin_signup/>}/>
+        <Route path='/admin-login' element={<AdminLogin/>}/>
+      </Routes>
     </div>
   );
-}
+}  
 
 export default App;
