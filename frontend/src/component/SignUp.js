@@ -1,6 +1,7 @@
 import React, {useState} from 'react'; 
 import '../component/SignUp.css';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
@@ -10,6 +11,7 @@ const SignUp = () => {
     //for status message about sign-up
     const [message, setMessage] = useState("")
     const endpoint = "http://localhost:3500/users/signUp"
+    let navigate = useNavigate()
     const submit = (e)=> {
       e.preventDefault()
       let userDetails = {fullName, email, password};
@@ -17,6 +19,9 @@ const SignUp = () => {
       .then((response)=>{
         console.log(response.data);
         setMessage(response.data.message)
+        if (response.data.status) {
+          navigate("/signin")
+        }
       })
       .catch((err)=>{
         console.log(err.data);

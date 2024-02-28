@@ -8,7 +8,7 @@ const Admin_signup = () => {
     const [password, setPassword] = useState("");
     //for status message about sign-up
     const [message, setMessage] = useState("")
-    const endpoint = "http://localhost:3500/admin/signup"
+    const endpoint = "http://localhost:3500/signup"
     const submit = (e)=> {
       e.preventDefault()
       let userDetails = {fullName, email, password};
